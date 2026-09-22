@@ -35,3 +35,27 @@
 - **Ubicación:** `src/App.jsx:31` y `src/App.jsx:45`
 - **Descripción:** `addToCart` sumaba siempre 1 a la cantidad aunque se hubiera alcanzado el stock, y `changeQty` permitía superar el stock con el botón "+". Tampoco se impedía agregar un producto con stock 0.
 - **Solución aplicada:** en `addToCart` se devuelve el carrito sin cambios si el producto ya está al máximo de stock (o si `stock <= 0`). En `changeQty`, el botón "+" no supera `item.stock`; si se intenta, la cantidad queda igual.
+
+## Error 6 — El carrito cubría los filtros y su botón de cierre
+
+- **Ubicación:** `src/App.css:101`
+- **Descripción:** el panel fijo del carrito comenzaba en la parte superior de la ventana y cubría los botones de filtro y el botón `Carrito`, impidiendo cerrar la sección desde ese botón.
+- **Solución aplicada:** el panel ahora comienza debajo del encabezado (`top: 80px`) y limita su altura al espacio restante, manteniendo accesibles los filtros y el botón para mostrar u ocultar el carrito.
+
+## Error 7 — La compra no reducía el stock
+
+- **Ubicación:** `src/App.jsx` y `src/ProductCard.jsx`
+- **Descripción:** al finalizar una compra se vaciaba el carrito, pero el stock de los productos no se modificaba.
+- **Solución aplicada:** al comprar se descuenta del estado de productos la cantidad adquirida, se limita la cantidad del carrito al stock disponible y se deshabilita el botón cuando un producto queda agotado.
+
+## Error 8 — Algunos precios del carrito aparecían negativos
+
+- **Ubicación:** `src/App.jsx` y `src/Cart.jsx`
+- **Descripción:** el descuento porcentual se restaba directamente al precio como si fuera una cantidad fija, por ejemplo `precio - descuentoPercentage`.
+- **Solución aplicada:** el precio final ahora se calcula como `precio * (1 - descuentoPercentage / 100)`, tanto en el total como en el detalle de cada producto.
+
+## Error 9 — El precio del carrito no coincidía con el precio del producto
+
+- **Ubicación:** `src/Cart.jsx:13`
+- **Descripción:** la pantalla principal mostraba el precio base, pero el carrito mostraba el precio con descuento aplicado, generando una diferencia visual.
+- **Solución aplicada:** el detalle del carrito ahora muestra el mismo precio base que la pantalla principal; el descuento se mantiene únicamente en el cálculo del total.

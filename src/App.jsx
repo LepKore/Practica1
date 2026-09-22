@@ -65,11 +65,20 @@ function App() {
 
   function checkout() {
     alert(`Compra realizada. Total: $${total.toFixed(2)}`)
+    setProducts((currentProducts) =>
+      currentProducts.map((product) => {
+        const purchased = cart.find((item) => item.id === product.id)
+        return purchased
+          ? { ...product, stock: product.stock - purchased.quantity }
+          : product
+      })
+    )
     setCart([])
   }
 
   const total = cart.reduce(
-    (sum, item) => sum + (item.price - item.discountPercentage) * item.quantity,
+    (sum, item) =>
+      sum + item.price * (1 - item.discountPercentage / 100) * item.quantity,
     0
   )
 
@@ -117,7 +126,12 @@ function App() {
 
         <div className="grid">
           {visibleProducts.map((p) => (
-            <ProductCard key={p.id} product={p} onAdd={() => addToCart(p)} />
+            <ProductCard
+              key={p.id}
+              product={p}
+              onAdd={() => addToCart(p)}
+              disabled={p.stock === 0}
+            />
           ))}
         </div>
       </main>
