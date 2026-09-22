@@ -77,8 +77,7 @@ function App() {
   }
 
   const total = cart.reduce(
-    (sum, item) =>
-      sum + item.price * (1 - item.discountPercentage / 100) * item.quantity,
+    (sum, item) => sum + item.price * item.quantity,
     0
   )
 

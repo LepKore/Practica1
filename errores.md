@@ -59,3 +59,9 @@
 - **Ubicación:** `src/Cart.jsx:13`
 - **Descripción:** la pantalla principal mostraba el precio base, pero el carrito mostraba el precio con descuento aplicado, generando una diferencia visual.
 - **Solución aplicada:** el detalle del carrito ahora muestra el mismo precio base que la pantalla principal; el descuento se mantiene únicamente en el cálculo del total.
+
+## Error 10 — El total del carrito no coincidía con el costo mostrado en inventario
+
+- **Ubicación:** `src/App.jsx:79`
+- **Descripción:** el total aplicaba `precio * (1 - descuentoPercentage / 100)` y el redondeo dejaba diferencias de centavos: productos como "Green Chili Pepper" (US$0.99) se sumaban como US$0.98. El inventario muestra el precio base, por lo que el total del carrito no coincidía.
+- **Solución aplicada:** el total ahora se calcula como `precio * cantidad` (`sum + item.price * item.quantity`), igualando exactamente el costo mostrado en el inventario.
