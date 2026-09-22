@@ -29,19 +29,31 @@ function App() {
   }, [search])
 
   function addToCart(product) {
-    cart.push({ ...product, quantity: 1 })
-    setCart(cart)
+    setCart((currentCart) => {
+      const existing = currentCart.find((item) => item.id === product.id)
+
+      if (existing) {
+        return currentCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      }
+
+      return [...currentCart, { ...product, quantity: 1 }]
+    })
   }
 
   function changeQty(index, delta) {
-    const updated = cart.map((item, i) =>
-      i === index ? { ...item, quantity: item.quantity + delta } : item
+    setCart((currentCart) =>
+      currentCart
+        .map((item, i) =>
+          i === index ? { ...item, quantity: item.quantity + delta } : item
+        )
+        .filter((item) => item.quantity > 0)
     )
-    setCart(updated)
   }
 
   function removeFromCart(item) {
-    setCart(cart.filter((c) => c.category !== item.category))
+    setCart((currentCart) => currentCart.filter((c) => c.id !== item.id))
   }
 
   function checkout() {
@@ -59,7 +71,7 @@ function App() {
     .filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
 
   return (
-    <div className="app">
+    <div className={`app${showCart ? ' cart-open' : ''}`}>
       <header className="header">
         <h1>Tienda Tech</h1>
         <input
@@ -82,8 +94,12 @@ function App() {
             </option>
           ))}
         </select>
-        <button className="cart-btn" onClick={() => setShowCart(!showCart)}>
-          Carrito ({cart.length})
+        <button
+          className="cart-btn"
+          onClick={() => setShowCart((visible) => !visible)}
+          aria-expanded={showCart}
+        >
+          {showCart ? 'Ocultar carrito' : `Carrito (${cart.length})`}
         </button>
       </header>
 

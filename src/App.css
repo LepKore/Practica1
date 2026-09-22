@@ -11,6 +11,10 @@ body {
   padding: 16px;
 }
 
+.app.cart-open main {
+  margin-right: min(420px, 35vw);
+}
+
 .header {
   display: flex;
   flex-wrap: wrap;
@@ -103,30 +107,54 @@ select {
   background: #fff;
   padding: 20px;
   overflow-y: auto;
-  z-index: -1;
+  z-index: 1000;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 700px) {
+  .app.cart-open main {
+    margin-right: 0;
+  }
+
+  .cart {
+    position: static;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    margin-top: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .cart-list {
   list-style: none;
   padding: 0;
+  margin: 0 0 16px;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 8px;
 }
 
 .cart-title {
   flex: 1;
+  min-width: 120px;
 }
 
 .qty {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.qty button {
+  min-width: 28px;
+  min-height: 28px;
+  cursor: pointer;
 }
 
 .remove {
