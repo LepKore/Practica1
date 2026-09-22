@@ -77,3 +77,9 @@
 - **Ubicación:** `src/App.jsx`, función `removeFromCart`.
 - **Descripción:** eliminar un producto comparando la categoría podía quitar también otros productos de la misma categoría.
 - **Solución aplicada:** la eliminación compara el identificador único `id` del producto seleccionado.
+
+## Error 13 — El carrito no se abría al agregar un producto
+
+- **Ubicación:** `src/App.jsx:31`
+- **Descripción:** si el carrito estaba cerrado, al presionar "Agregar" el producto entraba al carrito pero la vista del carrito permanecía oculta, obligando al usuario a abrirla manualmente.
+- **Solución aplicada:** `addToCart` ahora llama `setShowCart(true)`, de modo que al agregar un producto el carrito se abre automáticamente.

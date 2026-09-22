@@ -29,6 +29,7 @@ function App() {
   }, [search])
 
   function addToCart(product) {
+    setShowCart(true)
     setCart((currentCart) => {
       const existing = currentCart.find((item) => item.id === product.id)
 
