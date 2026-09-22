@@ -83,3 +83,9 @@
 - **Ubicación:** `src/App.jsx:31`
 - **Descripción:** si el carrito estaba cerrado, al presionar "Agregar" el producto entraba al carrito pero la vista del carrito permanecía oculta, obligando al usuario a abrirla manualmente.
 - **Solución aplicada:** `addToCart` ahora llama `setShowCart(true)`, de modo que al agregar un producto el carrito se abre automáticamente.
+
+## Error 14 — El botón "x" bajaba de línea con cantidades de dos dígitos
+
+- **Ubicación:** `src/App.css:140` y `src/App.css:109`
+- **Descripción:** `.cart-item` usaba `flex-wrap: wrap` con un ancho fijo del carrito de 400px. Al alcanzar una cantidad de dos dígitos (por ejemplo 10), la fila dejaba de caber y el botón "x" de eliminar saltaba a la línea siguiente, perdiendo la alineación y ocultándose del lado derecho del producto.
+- **Solución aplicada:** se quitó `flex-wrap` de `.cart-item` para que todos los elementos permanezcan en una sola fila (el título se encoge con `flex: 1` según el espacio) y se amplió el ancho del carrito a `min(440px, 100%)` para que la ventana se adapte al contenido.
