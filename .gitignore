@@ -23,6 +23,7 @@ pnpm-debug.log*
 
 # Markdown notes and answer guides
 *.md
+!errores.md 
 
 # Operating system files
 .DS_Store
