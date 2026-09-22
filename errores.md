@@ -65,3 +65,9 @@
 - **Ubicación:** `src/App.jsx:79`
 - **Descripción:** el total aplicaba `precio * (1 - descuentoPercentage / 100)` y el redondeo dejaba diferencias de centavos: productos como "Green Chili Pepper" (US$0.99) se sumaban como US$0.98. El inventario muestra el precio base, por lo que el total del carrito no coincidía.
 - **Solución aplicada:** el total ahora se calcula como `precio * cantidad` (`sum + item.price * item.quantity`), igualando exactamente el costo mostrado en el inventario.
+
+## Error 11 — El filtro "Todas" no mostraba todos los productos
+
+- **Ubicación:** `src/App.jsx:21`
+- **Descripción:** la carga inicial solicitaba únicamente 30 productos (`limit=30`), aunque el filtro "Todas" debía mostrar todo el catálogo.
+- **Solución aplicada:** la consulta general ahora usa `limit=0` para solicitar todos los productos disponibles.

@@ -18,7 +18,7 @@ function App() {
     setLoading(true)
     const url = search
       ? `${API_URL}/search?q=${encodeURIComponent(search)}`
-      : `${API_URL}?limit=30`
+      : `${API_URL}?limit=0`
 
     fetch(url)
       .then((res) => res.json())
