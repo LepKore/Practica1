@@ -29,3 +29,9 @@
 - **Ubicación:** `src/App.jsx:31`
 - **Descripción:** `addToCart` mutaba directamente el estado existente y volvía a guardar la misma referencia, por lo que React no siempre renderizaba el cambio.
 - **Solución aplicada:** se actualiza el carrito de forma inmutable y se incrementa la cantidad si el producto ya estaba agregado.
+
+## Error 6 — Se podían agregar más unidades que el stock disponible
+
+- **Ubicación:** `src/App.jsx:31` y `src/App.jsx:45`
+- **Descripción:** `addToCart` sumaba siempre 1 a la cantidad aunque se hubiera alcanzado el stock, y `changeQty` permitía superar el stock con el botón "+". Tampoco se impedía agregar un producto con stock 0.
+- **Solución aplicada:** en `addToCart` se devuelve el carrito sin cambios si el producto ya está al máximo de stock (o si `stock <= 0`). En `changeQty`, el botón "+" no supera `item.stock`; si se intenta, la cantidad queda igual.
