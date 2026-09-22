@@ -29,3 +29,15 @@
 - **Ubicación:** `src/App.jsx:31`
 - **Descripción:** `addToCart` mutaba directamente el estado existente y volvía a guardar la misma referencia, por lo que React no siempre renderizaba el cambio.
 - **Solución aplicada:** se actualiza el carrito de forma inmutable y se incrementa la cantidad si el producto ya estaba agregado.
+
+## Error 6 — El carrito cubría los filtros y su botón de cierre
+
+- **Ubicación:** `src/App.css:101`
+- **Descripción:** el panel fijo del carrito comenzaba en la parte superior de la ventana y cubría los botones de filtro y el botón `Carrito`, impidiendo cerrar la sección desde ese botón.
+- **Solución aplicada:** el panel ahora comienza debajo del encabezado (`top: 80px`) y limita su altura al espacio restante, manteniendo accesibles los filtros y el botón para mostrar u ocultar el carrito.
+
+## Error 7 — La compra no reducía el stock
+
+- **Ubicación:** `src/App.jsx` y `src/ProductCard.jsx`
+- **Descripción:** al finalizar una compra se vaciaba el carrito, pero el stock de los productos no se modificaba.
+- **Solución aplicada:** al comprar se descuenta del estado de productos la cantidad adquirida, se limita la cantidad del carrito al stock disponible y se deshabilita el botón cuando un producto queda agotado.

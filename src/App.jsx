@@ -30,9 +30,13 @@ function App() {
 
   function addToCart(product) {
     setCart((currentCart) => {
+      if (product.stock <= 0) return currentCart
+
       const existing = currentCart.find((item) => item.id === product.id)
 
       if (existing) {
+        if (existing.quantity >= product.stock) return currentCart
+
         return currentCart.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         )
@@ -46,7 +50,12 @@ function App() {
     setCart((currentCart) =>
       currentCart
         .map((item, i) =>
-          i === index ? { ...item, quantity: item.quantity + delta } : item
+          i === index
+            ? {
+                ...item,
+                quantity: Math.min(item.stock, item.quantity + delta),
+              }
+            : item
         )
         .filter((item) => item.quantity > 0)
     )
@@ -58,6 +67,14 @@ function App() {
 
   function checkout() {
     alert(`Compra realizada. Total: $${total.toFixed(2)}`)
+    setProducts((currentProducts) =>
+      currentProducts.map((product) => {
+        const purchased = cart.find((item) => item.id === product.id)
+        return purchased
+          ? { ...product, stock: product.stock - purchased.quantity }
+          : product
+      })
+    )
     setCart([])
   }
 
@@ -110,7 +127,12 @@ function App() {
 
         <div className="grid">
           {visibleProducts.map((p) => (
-            <ProductCard key={p.id} product={p} onAdd={() => addToCart(p)} />
+            <ProductCard
+              key={p.id}
+              product={p}
+              onAdd={() => addToCart(p)}
+              disabled={p.stock === 0}
+            />
           ))}
         </div>
       </main>
