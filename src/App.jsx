@@ -60,7 +60,7 @@ function App() {
   }
 
   function removeFromCart(item) {
-    setCart((currentCart) => currentCart.filter((c) => c.id !== item.id))
+    setCart((currentCart) => currentCart.filter((cartItem) => cartItem.id !== item.id))
   }
 
   function checkout() {

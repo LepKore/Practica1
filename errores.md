@@ -71,3 +71,9 @@
 - **Ubicación:** `src/App.jsx:21`
 - **Descripción:** la carga inicial solicitaba únicamente 30 productos (`limit=30`), aunque el filtro "Todas" debía mostrar todo el catálogo.
 - **Solución aplicada:** la consulta general ahora usa `limit=0` para solicitar todos los productos disponibles.
+
+## Error 12 — Eliminación por categoría en lugar de producto
+
+- **Ubicación:** `src/App.jsx`, función `removeFromCart`.
+- **Descripción:** eliminar un producto comparando la categoría podía quitar también otros productos de la misma categoría.
+- **Solución aplicada:** la eliminación compara el identificador único `id` del producto seleccionado.
