@@ -27,6 +27,14 @@ pnpm-debug.log*
 !README.md
 !AGENTS.md
 
+# Project skills and generated context ARE documentation, so they are tracked
+!/.agents/
+!/.agents/**/*.md
+!/.contexto/
+!/.contexto/**/*.md
+# Test fixtures ship a nested .git; without this they land as gitlinks (submodules)
+.agents/skills/*/evals/fixtures/
+
 # Operating system files
 .DS_Store
 Thumbs.db
