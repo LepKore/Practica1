@@ -8,7 +8,7 @@
 
 ## Error 2 — Búsqueda sensible a mayúsculas/minúsculas
 
-- **Ubicación:** `src/App.jsx:59`
+- **Ubicación:** `src/App.jsx:87`
 - **Descripción:** el filtro cliente `.filter((p) => p.title.includes(search))` distinguía mayúsculas de minúsculas: buscar "IPHONE" no encontraba "iPhone". Eso se suma a que la consulta server-side (dummyjson) sí es insensible a mayúsculas, por lo que el doble filtrado podía descartar resultados válidos.
 - **Solución aplicada:** se normalizan ambas cadenas con `toLowerCase()` antes de comparar: `.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))`. Ahora la búsqueda no distingue entre mayúsculas y minúsculas, tanto en el texto de entrada como en los títulos.
 
@@ -62,7 +62,7 @@
 
 ## Error 10 — El total del carrito no coincidía con el costo mostrado en inventario
 
-- **Ubicación:** `src/App.jsx:79`
+- **Ubicación:** `src/App.jsx:80-83`
 - **Descripción:** el total aplicaba `precio * (1 - descuentoPercentage / 100)` y el redondeo dejaba diferencias de centavos: productos como "Green Chili Pepper" (US$0.99) se sumaban como US$0.98. El inventario muestra el precio base, por lo que el total del carrito no coincidía.
 - **Solución aplicada:** el total ahora se calcula como `precio * cantidad` (`sum + item.price * item.quantity`), igualando exactamente el costo mostrado en el inventario.
 

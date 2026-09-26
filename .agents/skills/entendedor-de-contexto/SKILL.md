@@ -77,6 +77,17 @@ sospechado por archivo, y no se rompe si el directorio no es un repo git — dev
 `ultimo_commit: null` y sigue. Las heurísticas por nombre y por primer bloque las completas
 tú sobre su salida: el script no adivina el contenido.
 
+Un detalle que importa: **el `.gitignore` es del repositorio, no de la documentación.** Si el
+proyecto ignora `*.md` (cosa habitual para no commitear notas personales), un `CONTRIBUTING.md`
+o un `docs/arquitectura.md` no trackeado desaparecen del inventario y el informe va a concluir
+que no existen. Cuando sospeches eso, añade `--incluir-ignorados`: esos archivos entran marcados
+con `ignorado_por_git: true`, y tú decides si cuentan. Es la diferencia entre "no hay
+documentación de esto" y "no lo vi".
+
+Un caso esperado de ese flag: si `.opencode/skills/` es una unión (junction) a
+`.agents/skills/`, los mismos archivos aparecen dos veces. Son el mismo archivo; cuéntalo una
+sola vez.
+
 Un detalle que importa en la práctica: los archivos de instrucciones se aplican **por
 cercanía**. Si hay un `AGENTS.md` en `src/` y otro en la raíz, al trabajar en `src/` manda el de
 `src/`, y el de la raíz cubre el resto. Reporta la jerarquía si existe; asumir "gana el de la

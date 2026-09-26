@@ -32,11 +32,6 @@ pnpm-debug.log*
 !/.agents/**/*.md
 !/.contexto/
 !/.contexto/**/*.md
-# Test fixtures ship a nested .git; without this they land as gitlinks (submodules)
-.agents/skills/*/evals/fixtures/
-# Junctions to .agents/skills so opencode discovers them; git must not see the
-# skills a second time through this path, nor the fixtures nested behind it
-.opencode/skills/
 
 # Operating system files
 .DS_Store

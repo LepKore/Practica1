@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "El informe marca el contexto externo como ausente",
+      "passed": false,
+      "evidence": "no marco la ausencia de contexto externo"
+    },
+    {
+      "text": "El informe deriva estructura y comandos del repositorio",
+      "passed": true,
+      "evidence": "menciona: ['package.json', 'scripts', 'src/']"
+    },
+    {
+      "text": "El informe lista al menos 3 elementos FALTANTE",
+      "passed": false,
+      "evidence": "0 hallazgos FALTANTE"
+    },
+    {
+      "text": "El informe declara que no escribio en el proyecto analizado",
+      "passed": false,
+      "evidence": "no encontro declaracion explicita de que no escribio en el proyecto"
+    },
+    {
+      "text": "El informe ofrece generar el contexto base",
+      "passed": false,
+      "evidence": "ninguno de ['generar', 'ofrece', 'propone', '.contexto'] aparece en el informe"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "archivo": "informe_completo_contexto.md",
+    "lineas": 163,
+    "marcas_de_skill": 0
+  },
+  "notes": [
+    "marcas_de_skill=0 indica que el informe no cita terminologia de la skill"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "ultima_ejecucion": "2026-09-25T00:00:00Z",
+  "modo": "B",
+  "modo_origen": "usuario",
+  "contexto_externo": "presente",
+  "herramientas": {
+    "configuradas": [],
+    "conectadas": [
+      "codebase-memory-mcp",
+      "context7",
+      "playwright",
+      "composio"
+    ],
+    "huecos": [
+      "codebase-memory-mcp no tiene proyecto indexado para este repo",
+      "clickup y notion conectados solo como herramientas de escritura, sin capacidad de lectura"
+    ]
+  },
+  "inventario": [
+    { "ruta": "AGENTS.md", "sha256": "6b3e59dc11cc608ee617d71d10a1ad52b33c336e2d1d38874478b63ed5e6ac88", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "convenciones" },
+    { "ruta": "README.md", "sha256": "193ffbc057459944793d9123e74c92fa04c1f1c4cfdce88e8d1c961b86d905e3", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "onboarding" },
+    { "ruta": "errores.md", "sha256": "f748812d090997d058603ddd2422deb5c9a2766757c354dcb85e4b7b56521dda", "ultimo_commit": "2026-09-22T14:17:38-04:00", "tipo": "registro-decisiones" },
+    { "ruta": "skills-lock.json", "sha256": "85bc5d34678e103fd0a4958366b378d6db0ce8489bafe69ff7500241de432d77", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "configuracion" }
+  ],
+  "hallazgos": [
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "AGENTS.md:48",
+      "dice": "Markdown ignorado con excepciones solo para README.md y AGENTS.md",
+      "deberia": "incluye errores.md, /.agents/ y /.contexto/",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "errores.md Error 2",
+      "dice": "src/App.jsx:59",
+      "deberia": "src/App.jsx:87",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "errores.md Error 10",
+      "dice": "src/App.jsx:79",
+      "deberia": "src/App.jsx:80-83",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "AGENTS.md:37",
+      "dice": "prefer single quotes",
+      "deberia": "simples en JS, dobles en JSX y CSS",
+      "confianza": "media",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "FALTANTE",
+      "ubicacion": "AGENTS.md",
+      "dice": "no menciona errores.md",
+      "deberia": "describirlo como registro de errores corregidos",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "FALTANTE",
+      "ubicacion": "AGENTS.md",
+      "dice": "no menciona la dependencia de dummyjson.com/products",
+      "deberia": "seccion Known Pitfalls",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "CONTRADICTORIO",
+      "ubicacion": "README.md:3 vs errores.md",
+      "dice": "README afirma 10 errores, errores.md registra 14 con un Error 6 duplicado",
+      "deberia": "sin resolver por decision del usuario",
+      "confianza": "alta",
+      "estado": "rechazado"
+    },
+    {
+      "tipo": "FALTANTE",
+      "ubicacion": ".codex/skills/review-progress/",
+      "dice": "script sin documentar",
+      "deberia": "describir su proposito si el usuario lo considera parte del proyecto",
+      "confianza": "baja",
+      "estado": "pendiente"
+    }
+  ],
+  "cambios_aplicados": [
+    "AGENTS.md:48 excepciones reales del .gitignore",
+    "errores.md Error 2: src/App.jsx:59 -> src/App.jsx:87",
+    "errores.md Error 10: src/App.jsx:79 -> src/App.jsx:80-83",
+    "AGENTS.md:37 convenciones de comillas por lenguaje anfitrion",
+    "AGENTS.md Project Structure: anadir errores.md",
+    "AGENTS.md: nueva seccion Known Pitfalls"
+  ],
+  "rechazos": [
+    {
+      "decision": "README.md es el instructivo original de la practica; no tocarlo ni renumerar errores.md",
+      "alcance": "README.md completo y la numeracion de errores.md",
+      "no_reproponer": true
+    }
+  ],
+  "pendientes": [
+    "Describir .codex/skills/review-progress/ si el usuario confirma que forma parte del proyecto"
+  ]
+}

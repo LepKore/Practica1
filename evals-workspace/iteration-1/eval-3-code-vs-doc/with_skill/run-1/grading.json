@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "El informe resuelve la contradiccion de la API por precedencia con el codigo ganando",
+      "passed": true,
+      "evidence": "aplica la regla de precedencia: el codigo ejecutable gana"
+    },
+    {
+      "text": "El informe detecta el drift /api/v2 vs /api/v1",
+      "passed": true,
+      "evidence": "presente: '/api/v2'"
+    },
+    {
+      "text": "La regla de negocio no documentada queda como PREGUNTAR y no se adivina",
+      "passed": true,
+      "evidence": "marca PREGUNTAR y declara explicitamente que no adivina"
+    },
+    {
+      "text": "El informe declara que no escribio en Notion ni en ninguna plataforma externa",
+      "passed": true,
+      "evidence": "presente: 'Notion'"
+    },
+    {
+      "text": "El informe declara que no escribio en el proyecto analizado",
+      "passed": true,
+      "evidence": "declaracion explicita: 'escritura (Notion, ClickUp, GitHub) no'"
+    },
+    {
+      "text": "El informe confirma que las premisas del usuario no tienen respaldo",
+      "passed": true,
+      "evidence": "presente: 'no se sostienen'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "archivo": "context-report.md",
+    "lineas": 242,
+    "marcas_de_skill": 10
+  },
+  "notes": [
+    "marcas_de_skill=0 indica que el informe no cita terminologia de la skill"
+  ]
+}

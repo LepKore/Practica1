@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository contains a small React 18 + Vite storefront. Source code lives in `src/`: `main.jsx` mounts the app, `App.jsx` owns application state and data loading, `ProductCard.jsx` renders product cards, `Cart.jsx` renders the cart panel, and `App.css` contains global styling. Static entry files are `index.html` and `vite.config.js`. Build output is generated in `dist/` and must not be committed. Dependencies live in `node_modules/` and are restored with `npm i`.
+This repository contains a small React 18 + Vite storefront. Source code lives in `src/`: `main.jsx` mounts the app, `App.jsx` owns application state and data loading, `ProductCard.jsx` renders product cards, `Cart.jsx` renders the cart panel, and `App.css` contains global styling. Static entry files are `index.html` and `vite.config.js`. `errores.md` is the running log of the bugs found and fixed in this exercise, with the symptom, the responsible file and line, and the applied fix for each one. Build output is generated in `dist/` and must not be committed. Dependencies live in `node_modules/` and are restored with `npm i`.
 
 ## Build, Test, and Development Commands
 
@@ -34,11 +34,15 @@ Serves the production build locally for a final check.
 
 ## Coding Style & Naming Conventions
 
-Write React components as function components in `.jsx` files. Use PascalCase for components (`ProductCard`, `Cart`) and camelCase for state, functions, and props (`addToCart`, `visibleProducts`). Keep indentation at two spaces, prefer single quotes, and omit semicolons to match the current code. Keep styles in `src/App.css` unless a larger feature justifies splitting files.
+Write React components as function components in `.jsx` files. Use PascalCase for components (`ProductCard`, `Cart`) and camelCase for state, functions, and props (`addToCart`, `visibleProducts`). Keep indentation at two spaces and omit semicolons to match the current code. Quoting follows the host language: single quotes in JavaScript (`'beauty'`, `'Agregar'`), double quotes in JSX attributes and in `src/App.css`. Keep styles in `src/App.css` unless a larger feature justifies splitting files.
 
 ## Testing Guidelines
 
 No automated test framework is configured yet. For now, verify changes manually with `npm run dev` and run `npm run build` before committing. If tests are added later, prefer Vitest with React Testing Library and name files as `*.test.jsx` beside the component being tested.
+
+## Known Pitfalls
+
+The storefront reads live product data from `https://dummyjson.com/products` at runtime, so there is no offline fallback. Without network access the app stays on the loading state and shows no products or errors. When verifying a change, confirm the request actually succeeded before concluding the UI is broken. `src/App.jsx` also filters the fetched results a second time on both category and search text, so a product can be excluded client-side even when the API returned it.
 
 ## Commit & Pull Request Guidelines
 
@@ -46,4 +50,4 @@ The existing history uses short Spanish commit messages such as `arreglos` and `
 
 ## Security & Configuration Tips
 
-Do not commit generated folders, local environment files, or answer guides. Markdown files are ignored by default, with exceptions for `README.md` and this `AGENTS.md`.
+Do not commit generated folders or local environment files. Markdown files are ignored by default, with exceptions for `README.md`, `AGENTS.md`, `errores.md`, and everything under `/.agents/` and `/.contexto/` — those last two hold the project skills and the generated project context, which are documentation and therefore tracked. `errores.md` is the running log of the bugs fixed in this exercise.

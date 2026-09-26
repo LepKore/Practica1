@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "El informe clasifica AGENTS.md como DESACTUALIZADO",
+      "passed": true,
+      "evidence": "presente: 'DESACTUALIZADO'"
+    },
+    {
+      "text": "El informe clasifica server.js/server start como hallazgo",
+      "passed": true,
+      "evidence": "presente: 'server.js'"
+    },
+    {
+      "text": "El informe incluye una seccion de que NO esta documentado",
+      "passed": true,
+      "evidence": "presente: 'NO est'"
+    },
+    {
+      "text": "El informe declara que no escribio en el proyecto analizado",
+      "passed": true,
+      "evidence": "declaracion explicita: 'Escrituras en el proyecto analizado:** ninguna'"
+    },
+    {
+      "text": "El informe usa los 4 tipos de hallazgo de la skill",
+      "passed": true,
+      "evidence": "los 4 tipos aparecen"
+    },
+    {
+      "text": "El informe incluye tabla de hallazgos con confianza",
+      "passed": true,
+      "evidence": "tabla de hallazgos con las columnas del formato"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "archivo": "context-report.md",
+    "lineas": 68,
+    "marcas_de_skill": 8
+  },
+  "notes": [
+    "marcas_de_skill=0 indica que el informe no cita terminologia de la skill"
+  ]
+}
