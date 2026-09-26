@@ -29,6 +29,7 @@ Lee lo que necesites, cuando lo necesites:
 
 | Si vas a… | Lee |
 |---|---|
+| Instalar la skill, ver requisitos o un ejemplo de salida | `README.md` |
 | Reconocer qué archivos cuentan como contexto | `references/rutas-contexto-conocidas.md` |
 | Decidir si algo es contexto | `references/que-es-contexto.md` |
 | Clasificar un hallazgo | `references/criterio-inconsistencia.md` |
@@ -36,6 +37,7 @@ Lee lo que necesites, cuando lo necesites:
 | Escribir en Notion / ClickUp / GitHub | `references/plataformas/<plataforma>.md` |
 | Producir un archivo de salida | `assets/plantillas/*.md` |
 | Barrer el repo de una pasada | `scripts/inventario.py` |
+| Demostrar que la skill funciona | `evals/demo.ps1` (o `demo.sh`) |
 
 Las fases viven aquí. Las directrices y checklists viven en `references/` porque se cargan
 bajo demanda: leerlas todas de entrada gasta contexto en material que quizá no aplica a este
@@ -254,6 +256,12 @@ con "¿qué tal si lo cambiamos igual?" desperdicia su tiempo y tu credibilidad.
   Puede que la sección "vaya a producción" que ya no aplica te sirva como registro de que hubo
   un comando de deploy; la información de que algo *estuvo* ahí tiene valor. Y si yo me equivoqué
   al juzgar que está sobrante, al borrar te quedas sin la evidencia de por qué se decidió algo.
+
+Si los hallazgos **no caben en una sesión** —muchos, o de varios destinos con riesgo distinto— no
+improvises una tabla gigante: agrúpalos en `assets/plantillas/plan-accion.md`, que separa los
+cambios por **dónde se aplican** (repo = reversible con git, Notion = requiere confirmación,
+ClickUp = alguien más puede estar escribiendo). Para tres correcciones puntuales, la tabla de
+inconsistencias con su iteración cambio por cambio es suficiente y ese archivo sobra.
 
 ### 4.6 Verificar y cerrar
 

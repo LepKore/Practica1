@@ -32,6 +32,11 @@ pnpm-debug.log*
 !/.agents/**/*.md
 !/.contexto/
 !/.contexto/**/*.md
+# .opencode/skills/ holds junctions to .agents/skills so the agent discovers them once.
+# git must not see the same file a second time through that path
+.opencode/skills/
+# Sandbox de evaluaciones: corrida previa y sus gradings. Se regenera en cada benchmark
+evals-workspace/
 
 # Operating system files
 .DS_Store
