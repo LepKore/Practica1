@@ -2,7 +2,7 @@
 
 ## Error 1 — Texto invisible en el botón "Agregar"
 
-- **Ubicación:** `src/App.css:89`
+- **Ubicación:** `src/App.css:91-93`
 - **Descripción:** el botón `.add-btn` tenía `background: #4a90d9` (azul) y `color: #5a9ae0` (azul muy similar). El texto "Agregar" resultaba ilegible por falta de contraste.
 - **Solución aplicada:** el color del texto se cambió a blanco (`color: #fff`), contrastando correctamente con el fondo azul.
 
@@ -32,7 +32,7 @@
 
 ## Error 6 — Se podían agregar más unidades que el stock disponible
 
-- **Ubicación:** `src/App.jsx:31` y `src/App.jsx:45`
+- **Ubicación:** `src/App.jsx:31` y `src/App.jsx:44`
 - **Descripción:** `addToCart` sumaba siempre 1 a la cantidad aunque se hubiera alcanzado el stock, y `changeQty` permitía superar el stock con el botón "+". Tampoco se impedía agregar un producto con stock 0.
 - **Solución aplicada:** en `addToCart` se devuelve el carrito sin cambios si el producto ya está al máximo de stock (o si `stock <= 0`). En `changeQty`, el botón "+" no supera `item.stock`; si se intenta, la cantidad queda igual.
 
@@ -53,12 +53,14 @@
 - **Ubicación:** `src/App.jsx` y `src/Cart.jsx`
 - **Descripción:** el descuento porcentual se restaba directamente al precio como si fuera una cantidad fija, por ejemplo `precio - descuentoPercentage`.
 - **Solución aplicada:** el precio final ahora se calcula como `precio * (1 - descuentoPercentage / 100)`, tanto en el total como en el detalle de cada producto.
+- **Nota:** este arreglo fue **superado por el Error 10**. La corrección del Error 10 eliminado el descuento por completo, así que hoy no existe ninguna lógica de descuento en el código. Se conserva esta entrada como registro de cómo estaba el cálculo en ese momento.
 
 ## Error 9 — El precio del carrito no coincidía con el precio del producto
 
 - **Ubicación:** `src/Cart.jsx:13`
 - **Descripción:** la pantalla principal mostraba el precio base, pero el carrito mostraba el precio con descuento aplicado, generando una diferencia visual.
 - **Solución aplicada:** el detalle del carrito ahora muestra el mismo precio base que la pantalla principal; el descuento se mantiene únicamente en el cálculo del total.
+- **Nota:** el Error 10 también eliminó el descuento del cálculo del total, de modo que hoy el carrito y el inventario usan ambos el precio base sin ningún descuento.
 
 ## Error 10 — El total del carrito no coincidía con el costo mostrado en inventario
 

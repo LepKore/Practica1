@@ -4,6 +4,8 @@
 
 This repository contains a small React 18 + Vite storefront. Source code lives in `src/`: `main.jsx` mounts the app, `App.jsx` owns application state and data loading, `ProductCard.jsx` renders product cards, `Cart.jsx` renders the cart panel, and `App.css` contains global styling. Static entry files are `index.html` and `vite.config.js`. `errores.md` is the running log of the bugs found and fixed in this exercise, with the symptom, the responsible file and line, and the applied fix for each one. Build output is generated in `dist/` and must not be committed. Dependencies live in `node_modules/` and are restored with `npm i`.
 
+Outside `src/`, `.codex/skills/review-progress/scripts/review_store.py` is a standalone Python verification harness for the exercise: it reads `README.md` and the `src/` files from the current working directory and asserts that the expected fixes are in place (for example that the README still declares 10 errors and that `App.jsx` loads from DummyJSON). It has no dependency on the Node toolchain, it is not wired into any `package.json` script, and it must be run from the repository root because it resolves paths from `Path.cwd()`.
+
 ## Build, Test, and Development Commands
 
 Use these commands from the repository root:
@@ -43,6 +45,8 @@ No automated test framework is configured yet. For now, verify changes manually 
 ## Known Pitfalls
 
 The storefront reads live product data from `https://dummyjson.com/products` at runtime, so there is no offline fallback. Without network access the app stays on the loading state and shows no products or errors. When verifying a change, confirm the request actually succeeded before concluding the UI is broken. `src/App.jsx` also filters the fetched results a second time on both category and search text, so a product can be excluded client-side even when the API returned it.
+
+`CATEGORIES` in `src/App.jsx` hardcodes only four categories (`beauty`, `fragrances`, `furniture`, `groceries`), while DummyJSON exposes roughly twenty-four. Products outside those four still render in the grid and turn up in search results, but the category `<select>` offers no way to filter for them. Treat the select as a shortcut, not as the full catalogue.
 
 ## Commit & Pull Request Guidelines
 

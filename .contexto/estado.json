@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "ultima_ejecucion": "2026-09-25T00:00:00Z",
+  "ultima_ejecucion": "2026-09-25T21:38:01Z",
   "modo": "B",
   "modo_origen": "usuario",
   "contexto_externo": "presente",
@@ -13,15 +13,15 @@
       "composio"
     ],
     "huecos": [
-      "codebase-memory-mcp no tiene proyecto indexado para este repo",
-      "clickup y notion conectados solo como herramientas de escritura, sin capacidad de lectura"
+      "clickup y notion conectados via composio solo como herramientas de escritura, sin capacidad de lectura"
     ]
   },
   "inventario": [
-    { "ruta": "AGENTS.md", "sha256": "6b3e59dc11cc608ee617d71d10a1ad52b33c336e2d1d38874478b63ed5e6ac88", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "convenciones" },
+    { "ruta": "AGENTS.md", "sha256": "426b656567ff1762dfab1cbda3b32f5750dbb5634bf928db83d8dabd548ffd40", "ultimo_commit": "2026-09-25T20:39:47-04:00", "tipo": "convenciones" },
     { "ruta": "README.md", "sha256": "193ffbc057459944793d9123e74c92fa04c1f1c4cfdce88e8d1c961b86d905e3", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "onboarding" },
-    { "ruta": "errores.md", "sha256": "f748812d090997d058603ddd2422deb5c9a2766757c354dcb85e4b7b56521dda", "ultimo_commit": "2026-09-22T14:17:38-04:00", "tipo": "registro-decisiones" },
-    { "ruta": "skills-lock.json", "sha256": "85bc5d34678e103fd0a4958366b378d6db0ce8489bafe69ff7500241de432d77", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "configuracion" }
+    { "ruta": "errores.md", "sha256": "cca57ad8f84bb5d2d7a9790ba18a80e4b264820160c5d73ad8aedcafecf1f929", "ultimo_commit": "2026-09-25T20:39:47-04:00", "tipo": "registro-decisiones" },
+    { "ruta": "skills-lock.json", "sha256": "85bc5d34678e103fd0a4958366b378d6db0ce8489bafe69ff7500241de432d77", "ultimo_commit": "2026-09-23T14:10:20-04:00", "tipo": "configuracion" },
+    { "ruta": ".codex/skills/review-progress/scripts/review_store.py", "sha256": "d1c0b0a9fa4678db4c39a31643105affff38851300f1daeed0e7c97077e46109", "ultimo_commit": "2026-09-25T20:39:47-04:00", "tipo": "configuracion" }
   ],
   "hallazgos": [
     {
@@ -82,11 +82,43 @@
     },
     {
       "tipo": "FALTANTE",
-      "ubicacion": ".codex/skills/review-progress/",
-      "dice": "script sin documentar",
-      "deberia": "describir su proposito si el usuario lo considera parte del proyecto",
-      "confianza": "baja",
-      "estado": "pendiente"
+      "ubicacion": "AGENTS.md Project Structure",
+      "dice": "no documenta .codex/skills/review-progress/scripts/review_store.py, pese a estar trackeado en git",
+      "deberia": "describirlo como verificador del ejercicio, sin dependencia de Node y ejecutable solo desde la raiz",
+      "confianza": "media",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "errores.md:5",
+      "dice": "src/App.css:89",
+      "deberia": "src/App.css:91-93",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "errores.md:35",
+      "dice": "src/App.jsx:45",
+      "deberia": "src/App.jsx:44",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "DESACTUALIZADO",
+      "ubicacion": "errores.md Errores 8 y 9",
+      "dice": "el descuento se aplica como precio * (1 - descuentoPercentage / 100)",
+      "deberia": "no hay logica de descuento en el repo; el Error 10 la elimino",
+      "confianza": "alta",
+      "estado": "aplicado"
+    },
+    {
+      "tipo": "FALTANTE",
+      "ubicacion": "AGENTS.md Known Pitfalls",
+      "dice": "no documenta que CATEGORIES solo cubre 4 de las ~24 categorias del API",
+      "deberia": "indicar que el select es un atajo, no el catalogo completo",
+      "confianza": "alta",
+      "estado": "aplicado"
     }
   ],
   "cambios_aplicados": [
@@ -95,7 +127,12 @@
     "errores.md Error 10: src/App.jsx:79 -> src/App.jsx:80-83",
     "AGENTS.md:37 convenciones de comillas por lenguaje anfitrion",
     "AGENTS.md Project Structure: anadir errores.md",
-    "AGENTS.md: nueva seccion Known Pitfalls"
+    "AGENTS.md: nueva seccion Known Pitfalls",
+    "errores.md Error 1: src/App.css:89 -> src/App.css:91-93",
+    "errores.md Error 6: src/App.jsx:45 -> src/App.jsx:44",
+    "errores.md Errores 8 y 9: nota de que el Error 10 elimino el descuento",
+    "AGENTS.md Project Structure: anadir review_store.py",
+    "AGENTS.md Known Pitfalls: anadir limitacion de CATEGORIES"
   ],
   "rechazos": [
     {
@@ -104,7 +141,5 @@
       "no_reproponer": true
     }
   ],
-  "pendientes": [
-    "Describir .codex/skills/review-progress/ si el usuario confirma que forma parte del proyecto"
-  ]
+  "pendientes": []
 }
